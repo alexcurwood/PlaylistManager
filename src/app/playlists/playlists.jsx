@@ -1,18 +1,30 @@
 import './playlists.css'
+import {useState} from 'react'
 
 export default function Playlists({playlistIds, playlistNames}){
-    function handleClick(){
-        
+
+    const [displayPlaylists, setDisplayPlaylists] = useState(true)
+    const [playlistId, setPlaylistId] = useState()
+    
+    const playlistObj = Object.assign(...playlistNames.map((k, i) => ({[k]:playlistIds[i]})))
+
+    function handleClick(playlist){
+        setDisplayPlaylists(false)
+        setPlaylistId(playlistObj[playlist.target.className])
     }
     let tags = playlistNames.map(playlist =>
         <div className='playlistContainer'>
             <p>{playlist}</p>
-        {/* <iframe className = 'playlist' style={{borderRadius:12+"px"}} src={`https://open.spotify.com/embed/playlist/${playlist}?utm_source=generator`}  height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> */}
-        <button className='playlistButton' onClick={handleClick}>Use Playlist</button>
+        <button className= {playlist} onClick={playlist => handleClick(playlist)}>Use Playlist</button>
         </div>)
    return (
     <div className="playlists">
-        {tags}
+        {displayPlaylists && <div>
+            {tags}
+            </div>}
+        {!displayPlaylists && <div>
+            <iframe className = 'playlist' style={{borderRadius:12+"px"}} src={`https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator`}  height="700" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div> }
     </div>
    ) 
 }
