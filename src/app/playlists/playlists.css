@@ -9,6 +9,16 @@
     display: grid;
     grid-template-columns: 1fr;
     width: 100%;
+   padding-top: 0.5em;
     margin: 0 auto;
-    gap: 0;
+}
+
+.playlistContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.5em 0;
+    padding: 1em;
+    background-color: grey;
+    border-radius: 0.25em;
 }
