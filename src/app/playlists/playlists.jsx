@@ -12,6 +12,11 @@ export default function Playlists({playlistIds, playlistNames}){
         setDisplayPlaylists(false)
         setPlaylistId(playlistObj[playlist.target.className])
     }
+
+    function handleBack(){
+        setDisplayPlaylists(true)
+    }
+
     let tags = playlistNames.map(playlist =>
         <div className='playlistContainer'>
             <p>{playlist}</p>
@@ -23,6 +28,7 @@ export default function Playlists({playlistIds, playlistNames}){
             {tags}
             </div>}
         {!displayPlaylists && <div>
+            <button onClick = {handleBack}>Back</button>
             <iframe className = 'playlist' style={{borderRadius:12+"px"}} src={`https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator`}  height="700" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div> }
     </div>
