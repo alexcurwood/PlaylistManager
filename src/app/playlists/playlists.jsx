@@ -1,30 +1,23 @@
 import "./playlists.css";
 import { useState } from "react";
 
-export default function Playlists({ playlistIds, playlistNames }) {
+export default function Playlists({ playlists }) {
   const [displayPlaylists, setDisplayPlaylists] = useState(true);
   const [playlistId, setPlaylistId] = useState();
 
-  const playlistObj = Object.assign(
-    ...playlistNames.map((k, i) => ({ [k]: playlistIds[i] }))
-  );
-
-  function handleClick(playlist) {
+  function handleClick(e) {
     setDisplayPlaylists(false);
-    setPlaylistId(playlistObj[playlist.target.className]);
+    setPlaylistId(e.target.className);
   }
 
   function handleBack() {
     setDisplayPlaylists(true);
   }
 
-  let tags = playlistNames.map((playlist) => (
+  let tags = playlists.map((playlist) => (
     <div className="playlistContainer">
-      <p>{playlist}</p>
-      <button
-        className={playlist}
-        onClick={(playlist) => handleClick(playlist)}
-      >
+      <p>{playlist.name}</p>
+      <button className={playlist.id} onClick={(e) => handleClick(e)}>
         Use Playlist
       </button>
     </div>
@@ -32,22 +25,24 @@ export default function Playlists({ playlistIds, playlistNames }) {
 
   return (
     <div className="playlists">
-      {displayPlaylists && <div>{tags}</div>}
-
-      {!displayPlaylists && (
-        <div>
-          <button onClick={handleBack}>Back</button>
-          <iframe
-            className="playlist"
-            style={{ borderRadius: 12 + "px" }}
-            src={`https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator`}
-            height="700"
-            frameBorder="0"
-            allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-          ></iframe>
-        </div>
+      {displayPlaylists ? (
+        <div>{tags}</div>
+      ) : (
+        !displayPlaylists && (
+          <div>
+            <button onClick={handleBack}>Back</button>
+            <iframe
+              className="playlist"
+              style={{ borderRadius: 12 + "px" }}
+              src={`https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator`}
+              height="700"
+              frameBorder="0"
+              allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            ></iframe>
+          </div>
+        )
       )}
     </div>
   );

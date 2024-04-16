@@ -41,8 +41,7 @@ export default function Main() {
     setProfileInitialised(true);
   }
 
-  const [playlistIds, setPlaylistIds] = useState({});
-  const [playlistNames, setPlaylistNames] = useState({});
+  const [playlists, setPlaylists] = useState({});
   const [playlistsInitialised, setPlaylistsInitialised] = useState(false);
 
   async function getPlaylists() {
@@ -53,11 +52,12 @@ export default function Main() {
       },
     });
     const json = await response.json();
-    let playlistIdArray = json.items.map((playlist) => playlist.id);
-    let playlistNameArray = json.items.map((playlist) => playlist.name);
+    let playlistArray = json.items.map((playlist) => ({
+      id: playlist.id,
+      name: playlist.name,
+    }));
 
-    setPlaylistIds(playlistIdArray);
-    setPlaylistNames(playlistNameArray);
+    setPlaylists(playlistArray);
     setPlaylistsInitialised(true);
   }
 
@@ -67,9 +67,7 @@ export default function Main() {
       <button onClick={getProfile}>Show Profile</button>
       {profileInitialised && <Profile profile={profile} />}
       <button onClick={getPlaylists}>Show Playlists</button>
-      {playlistsInitialised && (
-        <Playlists playlistNames={playlistNames} playlistIds={playlistIds} />
-      )}
+      {playlistsInitialised && <Playlists playlists={playlists} />}
     </>
   );
 }
