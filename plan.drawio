@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="2J2UBcVosCLTtqAoPLyl" name="Page-1">
-        <mxGraphModel dx="3607" dy="2205" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="3412" dy="2101" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -195,6 +195,12 @@
                 </mxCell>
                 <mxCell id="64" value="Breakdown:&lt;br&gt;1) Display playlists with a button next to each, when clicked, display the specific playlist&lt;br&gt;2) Create filter menu with the genres available within the playlist (use loop through songs of playlist)&lt;br&gt;3) Create empty playlist next to user's playlist&lt;br&gt;4) Add dynamic functionality to filter toggle buttons to add corresponding songs to the new playlist&lt;br&gt;5) Add submit button which, when clicked, adds the new playlist to the user's profile&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
                     <mxGeometry y="-770" width="700" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="Render buttons when specific playlist is rendered.&lt;br&gt;Loop through each song and add any unique genres to an array.&lt;br&gt;Map this array to create a unique button for each genre" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
+                    <mxGeometry x="860" y="-960" width="490" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="Following a get request to /playlists/{playlistID}, the array of genres associated with track i can be accessed using json.items[i].track.artists[0].genres" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
+                    <mxGeometry x="890" y="-790" width="430" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
