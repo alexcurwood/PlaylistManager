@@ -1,109 +1,109 @@
 <mxfile host="65bd71144e">
     <diagram id="2J2UBcVosCLTtqAoPLyl" name="Page-1">
-        <mxGraphModel dx="3852" dy="3503" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="3607" dy="2205" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="2" value="MVP1:&lt;br&gt;Proof of concept:&lt;br&gt;1) Log into spotify using OAuth2&lt;br&gt;2) Display profile data&lt;br&gt;3) Display playlists" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1247" y="-1134" width="280" height="30" as="geometry"/>
+                    <mxGeometry x="-1570" y="-1040" width="280" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="3" value="For async functionality:&lt;br&gt;1) handler in JSX&lt;br&gt;2) state in component&lt;br&gt;3) handler sends fetch request and updates state&lt;br&gt;4) component rerenders with updated state" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="-1247" y="-1054" width="280" height="90" as="geometry"/>
+                    <mxGeometry x="-1240" y="-1070" width="280" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="4" value="Application" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-1507" y="-734" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="-720" y="-720" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="5" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="4" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-1227" y="-794" as="sourcePoint"/>
-                        <mxPoint x="-1217" y="-704" as="targetPoint"/>
+                        <mxPoint x="-440" y="-780" as="sourcePoint"/>
+                        <mxPoint x="-430" y="-690" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="6" value="On load - redirect to auth" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="-1387" y="-704" width="160" height="30" as="geometry"/>
+                    <mxGeometry x="-600" y="-690" width="160" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="7" value="Local storage" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-1137" y="-874" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="-350" y="-860" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="8" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" target="7" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-1307" y="-704" as="sourcePoint"/>
-                        <mxPoint x="-1177" y="-844" as="targetPoint"/>
+                        <mxPoint x="-520" y="-690" as="sourcePoint"/>
+                        <mxPoint x="-390" y="-830" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="-1307" y="-744"/>
+                            <mxPoint x="-520" y="-730"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="9" value="Store code verifier" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1257" y="-824" width="60" height="30" as="geometry"/>
+                    <mxGeometry x="-470" y="-810" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="11" value="Spotify authenticator" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-1217" y="-734" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="-430" y="-720" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="12" value="Main" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-957" y="-734" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="-170" y="-720" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="13" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="11" target="12" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-917" y="-664" as="sourcePoint"/>
-                        <mxPoint x="-867" y="-714" as="targetPoint"/>
+                        <mxPoint x="-130" y="-650" as="sourcePoint"/>
+                        <mxPoint x="-80" y="-700" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="14" value="Redirect with code query" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1067" y="-694" width="60" height="30" as="geometry"/>
+                    <mxGeometry x="-280" y="-680" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="17" value="On load - read code from URL and get access token" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-927" y="-794" width="60" height="30" as="geometry"/>
+                    <mxGeometry x="-140" y="-780" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="18" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7" target="12" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-947" y="-734" as="sourcePoint"/>
-                        <mxPoint x="-897" y="-784" as="targetPoint"/>
+                        <mxPoint x="-160" y="-720" as="sourcePoint"/>
+                        <mxPoint x="-110" y="-770" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="19" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="7" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-897" y="-814" as="sourcePoint"/>
-                        <mxPoint x="-897" y="-784" as="targetPoint"/>
+                        <mxPoint x="-110" y="-800" as="sourcePoint"/>
+                        <mxPoint x="-110" y="-770" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="20" value="After load - make API calls" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-927" y="-664" width="60" height="30" as="geometry"/>
+                    <mxGeometry x="-140" y="-650" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="21" value="Retrieve code verifier" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1047" y="-774" width="60" height="30" as="geometry"/>
+                    <mxGeometry x="-260" y="-760" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="22" value="Store access token" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-977" y="-874" width="60" height="30" as="geometry"/>
+                    <mxGeometry x="-190" y="-860" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="7" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-997" y="-754" as="sourcePoint"/>
-                        <mxPoint x="-897" y="-624" as="targetPoint"/>
+                        <mxPoint x="-210" y="-740" as="sourcePoint"/>
+                        <mxPoint x="-110" y="-610" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="-1017" y="-914"/>
-                            <mxPoint x="-827" y="-914"/>
-                            <mxPoint x="-827" y="-584"/>
-                            <mxPoint x="-897" y="-584"/>
+                            <mxPoint x="-230" y="-900"/>
+                            <mxPoint x="-40" y="-900"/>
+                            <mxPoint x="-40" y="-570"/>
+                            <mxPoint x="-110" y="-570"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="24" value="Retrieve access token" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-957" y="-954" width="60" height="30" as="geometry"/>
+                    <mxGeometry x="-170" y="-940" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="25" value="Breakdown:&lt;br&gt;1):&lt;br&gt;a) on application load - generate code verifier and store in local storage, generate code challenge&lt;br&gt;b) redirect to spotify log-in page using code challenge, and redirect to main page&lt;br&gt;c) after redirect, read the code from the URL, and retrieve code verifier from local storage&lt;br&gt;d) send get request to retrieve an access token and store in local storage&lt;br&gt;&lt;br&gt;2):&lt;br&gt;a) retrieve access token from local storage and send get request to profile endpoint&lt;br&gt;b) display response on page&lt;br&gt;&lt;br&gt;3):&lt;br&gt;a) retrieve access token from local storage and send get requests to playlists endpoint&lt;br&gt;b) map response to indeividual playlists in HTML fragments&lt;br&gt;c) display playlists on page" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-1617" y="-924" width="335" height="30" as="geometry"/>
+                    <mxGeometry x="-1430" y="-800" width="335" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="26" value="" style="endArrow=none;html=1;" edge="1" parent="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-1650" y="-520" as="sourcePoint"/>
-                        <mxPoint y="-520" as="targetPoint"/>
+                        <mxPoint y="-510" as="sourcePoint"/>
+                        <mxPoint x="1650" y="-510" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="27" value="" style="endArrow=none;html=1;" edge="1" parent="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-760" y="-520" as="sourcePoint"/>
-                        <mxPoint x="-760" y="-1170" as="targetPoint"/>
+                        <mxPoint x="-2" y="1150" as="sourcePoint"/>
+                        <mxPoint x="-2" y="-1169" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="28" value="" style="endArrow=none;html=1;" edge="1" parent="1">
@@ -175,11 +175,26 @@
                 <mxCell id="53" value="Decision: Based on the difficulty of implementing each feature and user data, the first feature will be a playlist manager. Initial reception is very positive and the aim is to add all features eventually&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=36;" vertex="1" parent="1">
                     <mxGeometry x="-710" y="1000" width="640" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="55" value="Difficulty of implementation (Low to high)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=36;" vertex="1" parent="1">
+                <mxCell id="55" value="Difficulty of implementation (Low to high):" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=36;" vertex="1" parent="1">
                     <mxGeometry x="-1641.5" y="980" width="681.5" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="56" value="Playlist manager =&amp;gt; Statistic Viewer =&amp;gt; New music recommender" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=36;" vertex="1" parent="1">
                     <mxGeometry x="-1640" y="1060" width="810" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="" style="endArrow=none;html=1;" edge="1" parent="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-1640" y="-510" as="sourcePoint"/>
+                        <mxPoint x="10" y="-510" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="60" value="&lt;font style=&quot;font-size: 48px;&quot;&gt;Playlist manager&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="-1130" width="477" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;MVP:&lt;br&gt;The user is able to pick a playlist, filter it by genre, and create a new playlist using the filter&amp;nbsp;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=36;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="-1010" width="670" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="64" value="Breakdown:&lt;br&gt;1) Display playlists with a button next to each, when clicked, display the specific playlist&lt;br&gt;2) Create filter menu with the genres available within the playlist (use loop through songs of playlist)&lt;br&gt;3) Create empty playlist next to user's playlist&lt;br&gt;4) Add dynamic functionality to filter toggle buttons to add corresponding songs to the new playlist&lt;br&gt;5) Add submit button which, when clicked, adds the new playlist to the user's profile&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
+                    <mxGeometry y="-770" width="700" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
