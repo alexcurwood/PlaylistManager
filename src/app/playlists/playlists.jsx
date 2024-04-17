@@ -8,12 +8,29 @@ export default function Playlists({ playlists }) {
 
   function handleClick(e) {
     setDisplayPlaylists(false);
-    setPlaylistId(e.target.className);
-    createGenreButtons(e.target.className);
+    setPlaylistId(e.target.id);
+    createGenreButtons(e.target.id);
   }
 
   async function createGenreButtons(playlistId) {
     const access_token = localStorage.getItem("access_token");
+    const json = await getPlaylist(playlistId, access_token);
+    let genres = [];
+    json.tracks.items.map((track) => {
+      if (track.track.artists[0].name) {
+        // for (genre of track.track.artists[0].name) {
+        //   if (!genre in genres) {
+        //     genres.append(genre);
+        //   }
+        // }
+        genres.push(track.track.artists[0].name);
+      }
+    });
+    let genreButtons = genres.map((genre) => <button>{genre}</button>);
+    setGenreButtons(genreButtons);
+  }
+
+  async function getPlaylist(playlistId, access_token) {
     const response = await fetch(
       `https://api.spotify.com/v1/playlists/${playlistId}`,
       {
@@ -23,29 +40,17 @@ export default function Playlists({ playlists }) {
       }
     );
     const json = await response.json();
-    let genresArray = [];
-    json.tracks.items.map((track) => {
-      console.log(track.track.artists[0].genres);
-      for (genre of track.track.artists[0].genres) {
-        if (!genre in genresArray) {
-          genresArray.append(genre);
-        }
-      }
-    });
-    let genreButtons = genresArray.map((genre) => {
-      <button>{genre}</button>;
-    });
-    setGenreButtons(genreButtons);
+    return json;
   }
 
   function handleBack() {
     setDisplayPlaylists(true);
   }
 
-  let tags = playlists.map((playlist) => (
+  let playlistContainers = playlists.map((playlist) => (
     <div className="playlistContainer">
       <p>{playlist.name}</p>
-      <button className={playlist.id} onClick={(e) => handleClick(e)}>
+      <button id={playlist.id} onClick={(e) => handleClick(e)}>
         Use Playlist
       </button>
     </div>
@@ -54,24 +59,22 @@ export default function Playlists({ playlists }) {
   return (
     <div className="playlists">
       {displayPlaylists ? (
-        <div>{tags}</div>
+        <div>{playlistContainers}</div>
       ) : (
-        !displayPlaylists && (
-          <div>
-            <button onClick={handleBack}>Back</button>
-            <div className="genre-buttons">{genreButtons}</div>
-            <iframe
-              className="playlist"
-              style={{ borderRadius: 12 + "px" }}
-              src={`https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator`}
-              height="700"
-              frameBorder="0"
-              allowfullscreen=""
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-            ></iframe>
-          </div>
-        )
+        <div>
+          <button onClick={handleBack}>Back</button>
+          <div className="genre-buttons">{genreButtons}</div>
+          <iframe
+            className="playlist"
+            style={{ borderRadius: 12 + "px" }}
+            src={`https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator`}
+            height="700"
+            frameBorder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+        </div>
       )}
     </div>
   );

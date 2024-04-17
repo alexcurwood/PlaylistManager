@@ -52,12 +52,12 @@ export default function Main() {
       },
     });
     const json = await response.json();
-    let playlistArray = json.items.map((playlist) => ({
+    let fetchedPlaylists = json.items.map((playlist) => ({
       id: playlist.id,
       name: playlist.name,
     }));
 
-    setPlaylists(playlistArray);
+    setPlaylists(fetchedPlaylists);
     setPlaylistsInitialised(true);
   }
 
