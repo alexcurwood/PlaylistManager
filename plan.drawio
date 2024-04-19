@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="2J2UBcVosCLTtqAoPLyl" name="Page-1">
-        <mxGraphModel dx="3412" dy="2101" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2910" dy="1835" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -201,6 +201,9 @@
                 </mxCell>
                 <mxCell id="66" value="Following a get request to /playlists/{playlistID}, the array of genres associated with track i can be accessed using json.items[i].track.artists[0].genres" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
                     <mxGeometry x="890" y="-790" width="430" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="Genre list does not appear in get request to /playlists:&lt;br&gt;instead&lt;br&gt;1) Collate a list of artists in the playlist&lt;br&gt;2) Batch them into groups of 100&lt;br&gt;3) Send a get request to /artists?ids='ID1'%2C'ID2'%2C'ID3'" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
+                    <mxGeometry x="1390" y="-1060" width="210" height="390" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

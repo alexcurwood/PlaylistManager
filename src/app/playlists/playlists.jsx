@@ -15,19 +15,40 @@ export default function Playlists({ playlists }) {
   async function createGenreButtons(playlistId) {
     const access_token = localStorage.getItem("access_token");
     const json = await getPlaylist(playlistId, access_token);
-    let genres = [];
+    let artistIDs = [];
     json.tracks.items.map((track) => {
-      if (track.track.artists[0].name) {
-        // for (genre of track.track.artists[0].name) {
-        //   if (!genre in genres) {
-        //     genres.append(genre);
-        //   }
-        // }
-        genres.push(track.track.artists[0].name);
+      if (!artistIDs.includes(track.track.artists[0].id)) {
+        artistIDs.push(track.track.artists[0].id);
       }
     });
-    let genreButtons = genres.map((genre) => <button>{genre}</button>);
+    const genres = await getGenres(artistIDs, access_token);
+    const genreButtons = genres.map((genre) => {
+      <button>{genre}</button>;
+    });
+    console.log(genres);
     setGenreButtons(genreButtons);
+  }
+
+  async function getGenres(artistIDs, access_token) {
+    let artistsQuery = artistIDs.join("%2C");
+    const response = await fetch(
+      `https://api.spotify.com/v1/artists?ids=${artistsQuery}`,
+      {
+        headers: {
+          Authorization: "Bearer " + access_token,
+        },
+      }
+    );
+    const json = await response.json();
+    let genres = [];
+    json.artists.map((artist) => {
+      artist.genres.map((genre) => {
+        if (!genres.includes(genre)) {
+          genres.push(genre);
+        }
+      });
+    });
+    return genres;
   }
 
   async function getPlaylist(playlistId, access_token) {
