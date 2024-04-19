@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="2J2UBcVosCLTtqAoPLyl" name="Page-1">
-        <mxGraphModel dx="2910" dy="1835" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2826" dy="1790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -93,12 +93,6 @@
                 </mxCell>
                 <mxCell id="25" value="Breakdown:&lt;br&gt;1):&lt;br&gt;a) on application load - generate code verifier and store in local storage, generate code challenge&lt;br&gt;b) redirect to spotify log-in page using code challenge, and redirect to main page&lt;br&gt;c) after redirect, read the code from the URL, and retrieve code verifier from local storage&lt;br&gt;d) send get request to retrieve an access token and store in local storage&lt;br&gt;&lt;br&gt;2):&lt;br&gt;a) retrieve access token from local storage and send get request to profile endpoint&lt;br&gt;b) display response on page&lt;br&gt;&lt;br&gt;3):&lt;br&gt;a) retrieve access token from local storage and send get requests to playlists endpoint&lt;br&gt;b) map response to indeividual playlists in HTML fragments&lt;br&gt;c) display playlists on page" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="-1430" y="-800" width="335" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="26" value="" style="endArrow=none;html=1;" edge="1" parent="1">
-                    <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint y="-510" as="sourcePoint"/>
-                        <mxPoint x="1650" y="-510" as="targetPoint"/>
-                    </mxGeometry>
                 </mxCell>
                 <mxCell id="27" value="" style="endArrow=none;html=1;" edge="1" parent="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -204,6 +198,12 @@
                 </mxCell>
                 <mxCell id="67" value="Genre list does not appear in get request to /playlists:&lt;br&gt;instead&lt;br&gt;1) Collate a list of artists in the playlist&lt;br&gt;2) Batch them into groups of 100&lt;br&gt;3) Send a get request to /artists?ids='ID1'%2C'ID2'%2C'ID3'" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
                     <mxGeometry x="1390" y="-1060" width="210" height="390" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="To filter by genre:&lt;br&gt;on click for button&lt;br&gt;Loop through songs list:&lt;br&gt;1) for every song, send fetch request to /artists to get genres.&lt;br&gt;2) Compare the genres to the desired genre&lt;br&gt;3) add song ID to new list" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
+                    <mxGeometry x="750" y="-370" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="Create empty array&lt;br&gt;Will render all songs using song {name, id} objects" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="-420" width="200" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
