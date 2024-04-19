@@ -12,6 +12,10 @@ export default function Playlists({ playlists }) {
     createGenreButtons(e.target.id);
   }
 
+  function handleBack() {
+    setDisplayPlaylists(true);
+  }
+
   async function createGenreButtons(playlistId) {
     const access_token = localStorage.getItem("access_token");
     const json = await getPlaylist(playlistId, access_token);
@@ -22,10 +26,11 @@ export default function Playlists({ playlists }) {
       }
     });
     const genres = await getGenres(artistIDs, access_token);
-    const genreButtons = genres.map((genre) => {
-      <button>{genre}</button>;
-    });
-    console.log(genres);
+    const genreButtons = genres.map((genre) => (
+      <div>
+        <button>{genre}</button>
+      </div>
+    ));
     setGenreButtons(genreButtons);
   }
 
@@ -62,10 +67,6 @@ export default function Playlists({ playlists }) {
     );
     const json = await response.json();
     return json;
-  }
-
-  function handleBack() {
-    setDisplayPlaylists(true);
   }
 
   let playlistContainers = playlists.map((playlist) => (
