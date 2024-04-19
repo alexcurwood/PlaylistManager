@@ -1,15 +1,18 @@
 import "./playlists.css";
+import Playlist from "./playlist";
 import { useState } from "react";
 
 export default function Playlists({ playlists }) {
   const [displayPlaylists, setDisplayPlaylists] = useState(true);
   const [genreButtons, setGenreButtons] = useState();
   const [playlistId, setPlaylistId] = useState();
+  const [tracks, setTracks] = useState([]);
 
   function handleClick(e) {
     setDisplayPlaylists(false);
     setPlaylistId(e.target.id);
     createGenreButtons(e.target.id);
+    createTracks(e.target.id);
   }
 
   function handleBack() {
@@ -19,13 +22,13 @@ export default function Playlists({ playlists }) {
   async function createGenreButtons(playlistId) {
     const access_token = localStorage.getItem("access_token");
     const json = await getPlaylist(playlistId, access_token);
-    let artistIDs = [];
+    let artistIds = [];
     json.tracks.items.map((track) => {
-      if (!artistIDs.includes(track.track.artists[0].id)) {
-        artistIDs.push(track.track.artists[0].id);
+      if (!artistIds.includes(track.track.artists[0].id)) {
+        artistIds.push(track.track.artists[0].id);
       }
     });
-    const genres = await getGenres(artistIDs, access_token);
+    const genres = await getGenres(artistIds, access_token);
     const genreButtons = genres.map((genre) => (
       <div>
         <button>{genre}</button>
@@ -34,8 +37,15 @@ export default function Playlists({ playlists }) {
     setGenreButtons(genreButtons);
   }
 
-  async function getGenres(artistIDs, access_token) {
-    let artistsQuery = artistIDs.join("%2C");
+  async function createTracks(playlistId) {
+    const access_token = localStorage.getItem("access_token");
+    const json = await getPlaylist(playlistId, access_token);
+    const tracks = json.tracks.items.map((track) => track.track.name);
+    setTracks(tracks);
+  }
+
+  async function getGenres(artistIds, access_token) {
+    let artistsQuery = artistIds.join("%2C");
     const response = await fetch(
       `https://api.spotify.com/v1/artists?ids=${artistsQuery}`,
       {
@@ -86,16 +96,7 @@ export default function Playlists({ playlists }) {
         <div>
           <button onClick={handleBack}>Back</button>
           <div className="genre-buttons">{genreButtons}</div>
-          <iframe
-            className="playlist"
-            style={{ borderRadius: 12 + "px" }}
-            src={`https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator`}
-            height="700"
-            frameBorder="0"
-            allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-          ></iframe>
+          {tracks && <Playlist tracks={tracks} />}
         </div>
       )}
     </div>
