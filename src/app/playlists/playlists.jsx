@@ -7,6 +7,8 @@ export default function Playlists({ playlists }) {
   const [genreButtons, setGenreButtons] = useState();
   const [playlistId, setPlaylistId] = useState();
   const [tracks, setTracks] = useState([]);
+  const [filteredTracks, setFilteredTracks] = useState([]);
+  const [tracksInitialised, setTracksInitialised] = useState(false);
 
   function handleClick(e) {
     setDisplayPlaylists(false);
@@ -30,7 +32,7 @@ export default function Playlists({ playlists }) {
     });
     const genres = await getGenres(artistIds, access_token);
     const genreButtons = genres.map((genre) => (
-      <div>
+      <div className="genreButton">
         <button>{genre}</button>
       </div>
     ));
@@ -40,8 +42,10 @@ export default function Playlists({ playlists }) {
   async function createTracks(playlistId) {
     const access_token = localStorage.getItem("access_token");
     const json = await getPlaylist(playlistId, access_token);
-    const tracks = json.tracks.items.map((track) => track.track.name);
+    let tracks = json.tracks.items.map((track) => track.track.name);
     setTracks(tracks);
+    setFilteredTracks(tracks);
+    setTracksInitialised(true);
   }
 
   async function getGenres(artistIds, access_token) {
@@ -96,7 +100,12 @@ export default function Playlists({ playlists }) {
         <div>
           <button onClick={handleBack}>Back</button>
           <div className="genre-buttons">{genreButtons}</div>
-          {tracks && <Playlist tracks={tracks} />}
+          {tracksInitialised && (
+            <div className="playlistEditor">
+              <Playlist tracks={tracks} />
+              <Playlist tracks={filteredTracks} />
+            </div>
+          )}
         </div>
       )}
     </div>

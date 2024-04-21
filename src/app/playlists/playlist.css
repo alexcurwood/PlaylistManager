@@ -1,0 +1,11 @@
+.playlist{
+    width: 50%;
+    display: grid;
+    grid-template-rows: 1fr;
+    border: solid;
+    border-color: white;
+}
+
+.track{
+    padding: 10px 0;
+}

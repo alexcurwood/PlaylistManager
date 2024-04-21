@@ -1,4 +1,10 @@
+import "./playlist.css";
+
 export default function Playlist(tracks) {
-  //   const tracksDisplay = tracks.map((track) => <p>{track}</p>);
-  return { tracks };
+  let tracksArray = tracks.tracks;
+  console.log(tracksArray);
+  const tracksDisplay = tracksArray.map((track) => (
+    <p className="track">{track}</p>
+  ));
+  return <div className="playlist">{tracksDisplay}</div>;
 }
