@@ -8,6 +8,8 @@ export default function Playlists({ playlists }) {
   const [tracks, _setTracks] = useState([]);
   const [filteredTracks, setFilteredTracks] = useState([]);
   const [tracksInitialised, setTracksInitialised] = useState(false);
+  const [filteredTracksInitialised, setFilteredTracksInitialised] =
+    useState(false);
 
   const tracksRef = useRef(tracks);
 
@@ -26,20 +28,21 @@ export default function Playlists({ playlists }) {
     setDisplayPlaylists(true);
   }
 
-  function filterByGenre(e) {
+  async function filterByGenre(e) {
     const access_token = localStorage.getItem("access_token");
     let genreFilteredTracks = [];
-    tracksRef.current.map(async (track) => {
-      console.log(track);
-      let artistId = await getArtist(track.id, access_token);
-      console.log(artistId);
-      let trackGenres = await getGenres(artistId, access_token, "track");
-      console.log(trackGenres);
-      if (trackGenres.includes(e.target.id)) {
-        genreFilteredTracks.push(track);
-      }
-    });
+    const tracksCopy = [...tracksRef.current];
+    await Promise.all(
+      tracksCopy.map(async (track) => {
+        const artistId = await getArtist(track.id, access_token);
+        const trackGenres = await getGenres(artistId, access_token, "track");
+        if (trackGenres.includes(e.target.id)) {
+          genreFilteredTracks.push(track);
+        }
+      })
+    );
     setFilteredTracks(genreFilteredTracks);
+    setFilteredTracksInitialised(true);
   }
 
   async function createGenreButtons(playlistId) {
@@ -70,7 +73,6 @@ export default function Playlists({ playlists }) {
       name: track.track.name,
     }));
     setTracks(tracks);
-    setFilteredTracks(tracks);
     setTracksInitialised(true);
   }
 

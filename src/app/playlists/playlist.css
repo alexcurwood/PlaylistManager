@@ -1,11 +1,13 @@
 .playlist{
+    display: flex;
     width: 50%;
-    display: grid;
-    grid-template-rows: 1fr;
     border: solid;
+    flex-direction: column;
     border-color: white;
+    align-items: flex-start;
 }
 
 .track{
     padding: 10px 0;
+    max-height: 30px;
 }
