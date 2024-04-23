@@ -85,22 +85,15 @@ export default function Playlists({ playlists, profile }) {
 
   async function createPlaylist() {
     const access_token = localStorage.getItem("access_token");
-    const newPlaylist = { id: "1GUMh0hwhpXBOfRmPeEAJb" };
-    // const newPlaylist = await postPlaylist(access_token);
-    const playlistInfo = await getPlaylist(newPlaylist.id, access_token);
-    const playlistId = JSON.stringify(newPlaylist).id;
-    await postPlaylistTracks(playlistId, access_token);
-    console.log(playlistInfo);
+    const newPlaylist = await postPlaylist(access_token);
+    await postPlaylistTracks(newPlaylist.id, access_token);
   }
 
   async function postPlaylistTracks(playlistId, access_token) {
-    const trackUris = [...filteredTracksRef.current]
-      .map((track) => track.uri)
-      .join(",");
-    const data = { uris: [trackUris], position: 0 };
+    const trackUris = [...filteredTracksRef.current].map((track) => track.uri);
+    const data = { uris: trackUris, position: 0 };
     const response = await fetch(
-      // `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
-      `https://api.spotify.com/v1/playlists/0jGy0YYM5yaKMcg8U3c441/tracks`,
+      `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
       {
         method: "POST",
         headers: {
