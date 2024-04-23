@@ -2,7 +2,7 @@ import "./playlists.css";
 import Playlist from "./playlist";
 import { useState, useRef } from "react";
 
-export default function Playlists({ playlists }) {
+export default function Playlists({ playlists, profile }) {
   const [displayPlaylists, setDisplayPlaylists] = useState(true);
   const [genreButtons, setGenreButtons] = useState();
   const [tracks, _setTracks] = useState([]);
@@ -77,9 +77,58 @@ export default function Playlists({ playlists }) {
     let tracks = json.tracks.items.map((track) => ({
       id: track.track.id,
       name: track.track.name,
+      uri: track.track.uri,
     }));
     setTracks(tracks);
     setTracksInitialised(true);
+  }
+
+  async function createPlaylist() {
+    const access_token = localStorage.getItem("access_token");
+    const newPlaylist = { id: "1GUMh0hwhpXBOfRmPeEAJb" };
+    // const newPlaylist = await postPlaylist(access_token);
+    const playlistInfo = await getPlaylist(newPlaylist.id, access_token);
+    const playlistId = JSON.stringify(newPlaylist).id;
+    await postPlaylistTracks(playlistId, access_token);
+    console.log(playlistInfo);
+  }
+
+  async function postPlaylistTracks(playlistId, access_token) {
+    const trackUris = [...filteredTracksRef.current]
+      .map((track) => track.uri)
+      .join(",");
+    const data = { uris: [trackUris], position: 0 };
+    const response = await fetch(
+      // `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+      `https://api.spotify.com/v1/playlists/0jGy0YYM5yaKMcg8U3c441/tracks`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + access_token,
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    const json = await response.json();
+    return json;
+  }
+
+  async function postPlaylist(access_token) {
+    const data = { name: "Generated playlist" };
+    const response = await fetch(
+      `https://api.spotify.com/v1/users/${profile.id}/playlists`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + access_token,
+        },
+        body: JSON.stringify(data),
+      }
+    );
+    const json = response.json();
+    return json;
   }
 
   async function getGenres(artistIds, access_token, playlistOrTrack) {
@@ -166,6 +215,7 @@ export default function Playlists({ playlists }) {
               <Playlist tracks={filteredTracks} />
             </div>
           )}
+          <button onClick={createPlaylist}>Create Playlist</button>
         </div>
       )}
     </div>

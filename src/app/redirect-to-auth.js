@@ -40,7 +40,8 @@ export default async function redirectToAuthPage() {
 
     const redirectUri = "http://localhost:3000/main";
 
-    const scope = "user-read-private user-read-email";
+    const scope =
+      "user-read-private user-read-email playlist-modify-public playlist-modify-private";
     const authUrl = new URL("https://accounts.spotify.com/authorize");
 
     // generated in the previous step

@@ -67,7 +67,9 @@ export default function Main() {
       <button onClick={getProfile}>Show Profile</button>
       {profileInitialised && <Profile profile={profile} />}
       <button onClick={getPlaylists}>Show Playlists</button>
-      {playlistsInitialised && <Playlists playlists={playlists} />}
+      {playlistsInitialised && (
+        <Playlists playlists={playlists} profile={profile} />
+      )}
     </>
   );
 }
