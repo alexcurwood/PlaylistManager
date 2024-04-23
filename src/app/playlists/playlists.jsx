@@ -6,16 +6,20 @@ export default function Playlists({ playlists }) {
   const [displayPlaylists, setDisplayPlaylists] = useState(true);
   const [genreButtons, setGenreButtons] = useState();
   const [tracks, _setTracks] = useState([]);
-  const [filteredTracks, setFilteredTracks] = useState([]);
+  const [filteredTracks, _setFilteredTracks] = useState([]);
   const [tracksInitialised, setTracksInitialised] = useState(false);
-  const [filteredTracksInitialised, setFilteredTracksInitialised] =
-    useState(false);
 
   const tracksRef = useRef(tracks);
+  const filteredTracksRef = useRef(filteredTracks);
 
   function setTracks(tracks) {
     tracksRef.current = tracks;
     _setTracks(tracks);
+  }
+
+  function setFilteredTracks(tracks) {
+    filteredTracksRef.current = tracks;
+    _setFilteredTracks(tracks);
   }
 
   function handleClick(e) {
@@ -30,19 +34,21 @@ export default function Playlists({ playlists }) {
 
   async function filterByGenre(e) {
     const access_token = localStorage.getItem("access_token");
-    let genreFilteredTracks = [];
+    let genreFilteredTracks = [...filteredTracksRef.current];
     const tracksCopy = [...tracksRef.current];
     await Promise.all(
       tracksCopy.map(async (track) => {
         const artistId = await getArtist(track.id, access_token);
         const trackGenres = await getGenres(artistId, access_token, "track");
-        if (trackGenres.includes(e.target.id)) {
+        if (
+          trackGenres.includes(e.target.id) &&
+          !genreFilteredTracks.includes(track)
+        ) {
           genreFilteredTracks.push(track);
         }
       })
     );
     setFilteredTracks(genreFilteredTracks);
-    setFilteredTracksInitialised(true);
   }
 
   async function createGenreButtons(playlistId) {
