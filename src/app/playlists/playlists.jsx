@@ -63,7 +63,7 @@ export default function Playlists({ playlists, profile }) {
     const genres = await getGenres(artistIds, access_token, "playlist");
     const genreButtons = genres.map((genre) => (
       <div className="genreButton">
-        <button id={genre} onClick={(e) => filterByGenre(e)}>
+        <button id={genre} onClick={(e) => filterByGenre(e)} className="outline">
           {genre}
         </button>
       </div>
