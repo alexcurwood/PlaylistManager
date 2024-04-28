@@ -1,7 +1,6 @@
 import "./playlists.css";
 import Playlist from "./playlist";
 import { useState, useRef } from "react";
-import { Button } from "flowbite-react";
 
 export default function Playlists({ playlists, profile }) {
   const [displayPlaylists, setDisplayPlaylists] = useState(true);
@@ -31,6 +30,9 @@ export default function Playlists({ playlists, profile }) {
 
   function handleBack() {
     setDisplayPlaylists(true);
+    setGenreButtons();
+    setTracks([]);
+    setFilteredTracks([]);
   }
 
   async function filterByGenre(genre) {
@@ -41,10 +43,6 @@ export default function Playlists({ playlists, profile }) {
       tracksCopy.map(async (track) => {
         const artistId = await getArtist(track.id, access_token);
         const trackGenres = await getGenres(artistId, access_token, "track");
-        console.log(genre);
-        console.log(trackGenres);
-        console.log(trackGenres.includes(genre));
-        console.log(!genreFilteredTracks.includes(track));
         if (
           trackGenres.includes(genre) &&
           !genreFilteredTracks.includes(track)
@@ -235,16 +233,20 @@ export default function Playlists({ playlists, profile }) {
             {tracksInitialised && (
               <div className="flex gap-x-2">
                 <div className="">
-                  <p>Original Playlist</p>
+                  <h5 className="text-xl font-bold tracking-tight text-white dark:text-white">
+                    Original Playlist
+                  </h5>
                   <Playlist tracks={tracks} />
                 </div>
                 <div>
-                  <p className="font-normal text-white">Filtered Playlist</p>
+                  <h5 className="text-xl font-bold tracking-tight text-white dark:text-white">
+                    Filtered Playlist
+                  </h5>
                   <Playlist tracks={filteredTracks} />
                 </div>
               </div>
             )}
-            <div className="py-4">
+            <div className="py-10">
               <button
                 className=" focus:outline-none text-black bg-white hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
                 onClick={createPlaylist}
