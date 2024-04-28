@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import getToken from "../get-token";
 import Profile from "../profile/profile";
 import Playlists from "../playlists/playlists";
+import { Button, Card } from "flowbite-react";
 
 export default function Main() {
   if (typeof window !== "undefined") {
@@ -64,9 +65,21 @@ export default function Main() {
   return (
     <>
       <h1>Profile</h1>
-      <button onClick={getProfile}>Show Profile</button>
+      <Button onClick={getProfile} color={"purple"}>
+        Show Profile
+      </Button>
       {profileInitialised && <Profile profile={profile} />}
-      <button onClick={getPlaylists}>Show Playlists</button>
+      <Card className="max-w-sm">
+        <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          Playlist Manager Tool
+        </h5>
+        <p className="font-normal text-gray-700 dark:text-gray-400">
+          A tool for filtering playlists by genre, to create sub-playlists
+        </p>
+        <Button onClick={getPlaylists} color={"purple"}>
+          Try It Out
+        </Button>
+      </Card>
       {playlistsInitialised && (
         <Playlists playlists={playlists} profile={profile} />
       )}

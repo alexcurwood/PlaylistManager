@@ -1,6 +1,7 @@
 import "./playlists.css";
 import Playlist from "./playlist";
 import { useState, useRef } from "react";
+import { Button } from "flowbite-react";
 
 export default function Playlists({ playlists, profile }) {
   const [displayPlaylists, setDisplayPlaylists] = useState(true);
@@ -32,7 +33,7 @@ export default function Playlists({ playlists, profile }) {
     setDisplayPlaylists(true);
   }
 
-  async function filterByGenre(e) {
+  async function filterByGenre(genre) {
     const access_token = localStorage.getItem("access_token");
     let genreFilteredTracks = [...filteredTracksRef.current];
     const tracksCopy = [...tracksRef.current];
@@ -40,14 +41,19 @@ export default function Playlists({ playlists, profile }) {
       tracksCopy.map(async (track) => {
         const artistId = await getArtist(track.id, access_token);
         const trackGenres = await getGenres(artistId, access_token, "track");
+        console.log(genre);
+        console.log(trackGenres);
+        console.log(trackGenres.includes(genre));
+        console.log(!genreFilteredTracks.includes(track));
         if (
-          trackGenres.includes(e.target.id) &&
+          trackGenres.includes(genre) &&
           !genreFilteredTracks.includes(track)
         ) {
           genreFilteredTracks.push(track);
         }
       })
     );
+    console.log(genreFilteredTracks);
     setFilteredTracks(genreFilteredTracks);
   }
 
@@ -63,7 +69,11 @@ export default function Playlists({ playlists, profile }) {
     const genres = await getGenres(artistIds, access_token, "playlist");
     const genreButtons = genres.map((genre) => (
       <div className="genreButton">
-        <button id={genre} onClick={(e) => filterByGenre(e)} className="outline">
+        <button
+          className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+          id={genre}
+          onClick={(e) => filterByGenre(e.target.id)}
+        >
           {genre}
         </button>
       </div>
@@ -201,11 +211,17 @@ export default function Playlists({ playlists, profile }) {
       ) : (
         <div>
           <button onClick={handleBack}>Back</button>
-          <div className="genre-buttons">{genreButtons}</div>
+          <div class="flex flex-wrap gap-x-2">{genreButtons}</div>
           {tracksInitialised && (
-            <div className="playlistEditor">
-              <Playlist tracks={tracks} />
-              <Playlist tracks={filteredTracks} />
+            <div className="flex gap-x-2">
+              <div className="">
+                <p>Original Playlist</p>
+                <Playlist tracks={tracks} />
+              </div>
+              <div>
+                <p className="font-normal text-white">Filtered Playlist</p>
+                <Playlist tracks={filteredTracks} />
+              </div>
             </div>
           )}
           <button onClick={createPlaylist}>Create Playlist</button>
