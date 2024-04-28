@@ -222,7 +222,15 @@ export default function Playlists({ playlists, profile }) {
           </>
         ) : (
           <div>
-            <button onClick={handleBack}>Back</button>
+            <button
+              className="focus:outline-none text-black bg-white hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+              onClick={handleBack}
+            >
+              Back to your playlists
+            </button>
+            <h5 className="text-2xl font-bold tracking-tight text-white dark:text-white">
+              Filter your playlist by genres:
+            </h5>
             <div class="flex flex-wrap gap-x-2">{genreButtons}</div>
             {tracksInitialised && (
               <div className="flex gap-x-2">
@@ -236,7 +244,14 @@ export default function Playlists({ playlists, profile }) {
                 </div>
               </div>
             )}
-            <button onClick={createPlaylist}>Create Playlist</button>
+            <div className="py-4">
+              <button
+                className=" focus:outline-none text-black bg-white hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+                onClick={createPlaylist}
+              >
+                Create Playlist
+              </button>
+            </div>
           </div>
         )}
       </div>
