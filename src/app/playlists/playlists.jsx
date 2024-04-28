@@ -197,36 +197,49 @@ export default function Playlists({ playlists, profile }) {
 
   let playlistContainers = playlists.map((playlist) => (
     <div className="playlistContainer">
-      <p>{playlist.name}</p>
-      <button id={playlist.id} onClick={(e) => handleClick(e)}>
+      <p className="text-black text-xl font-bold tracking-tight">
+        {playlist.name}
+      </p>
+      <button
+        className="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
+        id={playlist.id}
+        onClick={(e) => handleClick(e)}
+      >
         Use Playlist
       </button>
     </div>
   ));
 
   return (
-    <div className="playlists">
-      {displayPlaylists ? (
-        <div>{playlistContainers}</div>
-      ) : (
-        <div>
-          <button onClick={handleBack}>Back</button>
-          <div class="flex flex-wrap gap-x-2">{genreButtons}</div>
-          {tracksInitialised && (
-            <div className="flex gap-x-2">
-              <div className="">
-                <p>Original Playlist</p>
-                <Playlist tracks={tracks} />
+    <>
+      <div className="playlists">
+        {displayPlaylists ? (
+          <>
+            <h5 className="text-2xl font-bold tracking-tight text-white dark:text-white">
+              Your Playlists:
+            </h5>
+            <div>{playlistContainers}</div>
+          </>
+        ) : (
+          <div>
+            <button onClick={handleBack}>Back</button>
+            <div class="flex flex-wrap gap-x-2">{genreButtons}</div>
+            {tracksInitialised && (
+              <div className="flex gap-x-2">
+                <div className="">
+                  <p>Original Playlist</p>
+                  <Playlist tracks={tracks} />
+                </div>
+                <div>
+                  <p className="font-normal text-white">Filtered Playlist</p>
+                  <Playlist tracks={filteredTracks} />
+                </div>
               </div>
-              <div>
-                <p className="font-normal text-white">Filtered Playlist</p>
-                <Playlist tracks={filteredTracks} />
-              </div>
-            </div>
-          )}
-          <button onClick={createPlaylist}>Create Playlist</button>
-        </div>
-      )}
-    </div>
+            )}
+            <button onClick={createPlaylist}>Create Playlist</button>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
