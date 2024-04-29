@@ -34,7 +34,8 @@ The application was styled using TailwindCSS and the Flowbite Component Library.
 ## For a detailed description of the development process, please see the following blog posts:
 
 Research, planning and proof of concept:
+
 https://www.linkedin.com/posts/alexcurwood_i-am-ready-to-share-the-progress-of-my-spotify-activity-7185669550141493248-hqab?utm_source=share&utm_medium=member_desktop
 
 Playlist manager tool:
-<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7189954844302942208" height="1862" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+https://www.linkedin.com/posts/alexcurwood_an-update-on-my-spotify-project-in-my-previous-activity-7189954918475014144-1sqT?utm_source=share&utm_medium=member_desktop
