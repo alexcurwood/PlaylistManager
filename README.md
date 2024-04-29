@@ -40,3 +40,7 @@ https://www.linkedin.com/posts/alexcurwood_i-am-ready-to-share-the-progress-of-m
 Playlist manager tool:
 
 https://www.linkedin.com/posts/alexcurwood_an-update-on-my-spotify-project-in-my-previous-activity-7189954918475014144-1sqT?utm_source=share&utm_medium=member_desktop
+
+Initial styling:
+
+https://www.linkedin.com/posts/alexcurwood_another-short-update-on-my-spotify-project-activity-7190742730023579650-q-5s?utm_source=share&utm_medium=member_desktop
