@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import getToken from "../get-token";
-import Profile from "../profile/profile";
 import Playlists from "../playlists/playlists";
 import { Button, Card } from "flowbite-react";
 
@@ -25,15 +24,16 @@ export default function Main() {
       initialiseToken();
     }, []);
 
-    useEffect(() => {
-      async function initialiseProfile() {
-        if (!profileInitialised.current) {
-          profileInitialised.current = true;
-          await getProfile();
-        }
-      }
-      initialiseProfile();
-    }, []);
+    //   useEffect(() => {
+    //     async function initialiseProfile() {
+    //       if (!profileInitialised.current) {
+    //         profileInitialised.current = true;
+    //         await getProfile();
+    //       }
+    //     }
+    //     console.log("profile initialised");
+    //     initialiseProfile();
+    //   }, []);
   }
 
   // initialise states
@@ -66,6 +66,8 @@ export default function Main() {
       id: playlist.id,
       name: playlist.name,
     }));
+
+    getProfile();
 
     setPlaylists(fetchedPlaylists);
     setPlaylistsInitialised(true);
