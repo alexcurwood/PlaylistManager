@@ -1,35 +1,38 @@
-## Spotify Project
+# Playlist Manager
 
-### This web application seeks to solve the following problem: the Spotify Application does not allow for functionality requested by users.
+## I am in the process of creating a NextJS application which, after authentication, allows the user to select one of their Spotify playlists, filter by genre and create a subplaylist.
 
-### Thus far, the application features a playlist manager tool which, after authorisation, allows users to filter one of their playlists by any number of genres, and create a subplaylist using the filtered songs.
+### Motivations
 
-### The application has been created using Next.js, utilising the Spotify API for functionality, and TailwindCSS and Flowbite for styling
+As a Spotify user, I often find that my playlists become too large to manage easily. I wished for a tool which let me filter my playlists by a given set of genres, and create sub-playlists using these filters.
 
-### Research Methods
+I conducted research in the form of a Google Forms survey sent to my peers, family, and friends, which indicated that other people experience the same issue and would use a tool which offers this functionality.
 
-Research was conducted regarding which features, missing from the Spotify application, end-users would like to have available in a web application. The research covered a wide range of demographics and primarily focused on Spotify users.
+This formed my motivation for starting this project.
 
-### Research Results
+### Implementation
 
-The three most requested features were:
+#### Planning
 
-1. A playlist manager tool, which allows the user to filter a given playlist by x number of genres and create a subplaylist out of the filtered songs.
-2. A statistic viewer tool, which allows the user to view their most listened-to songs/ artists/ genres over a given period of time.
-3. A new music finder tool, which creates a recommendations playlist based on the user's listening habits
-   Analysing the research further, it was found that in general: younger users prioritised a new music finder tool, older users prioritised a playlist manager tool, and the most frequent users also prioritised a playlist manager tool.
+My first step was researching the Spotify API: https://developer.spotify.com/documentation/web-api. 
 
-### Project Planning
+Using this documentation, I formed a plan to use various GET and POST requests to the /artists, /playlists, and /tracks endpoints to achieve the required functionality. I also familiarised myself with the OAuth2.0 authorisation system, which was necessary for making these API calls on the user's behalf.
 
-Based on user research, the first feature chosen to be implemented was a playlist manager tool. A detailed breakdown of the plan for this feature can be found within the plan.drawio file.
+#### Proof of Concept
 
-### Playlist Manager Tool
+I then implemented the OAuth2.0 process within my application and sent GET requests to the /me and /playlists endpoints to display basic user data. This simple implementation demonstrated that with complex logic and further API calls, I could achieve the desired functionality within my application.
 
-The playlist manager tool was created using various calls to the Spotify API: https://developer.spotify.com/documentation/web-api. The user first grants permission using OAuth2.0 for the application to make API calls on their behalf. Various GET requests are then made to retrieve data regarding the user's playlists, and the songs within them. This data is then used within the genre-filtering process. After filtering, a POST request is then made to add the filtered playlist to the user's profile.
+#### Playlist Manager
 
-### Styling
+Using various GET requests to the /playlists, /tracks, and /artists endpoints, I could select a playlist from my library, filter it by various genres, and display the resulting sub-playlist within my application. Then using a POST request to the /playlists endpoint, I was able to create an empty playlist within my library, and then populate it using a further POST request to the /playlist endpoint.
+ 
+### Future Development
 
-The application was styled using TailwindCSS and the Flowbite Component Library.
+Currently, my application is very limited in its functionality. Only users authorised within my application dashboard can log in and use the playlist manager tool, and the application is limited to a certain number of API calls per minute. In addition, the UX/UI of the application can be greatly improved.
+
+In future, I will look to move my application from development mode into extended quota mode to rectify the first two issues, and create and develop wireframe designs to rectify the third.
+
+### I styled the application using TailwindCSS and the Flowbite Component Library.
 
 ## For a detailed description of the development process, please see the following blog posts:
 
