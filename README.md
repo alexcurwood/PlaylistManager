@@ -1,6 +1,6 @@
 # Playlist Manager
 
-## I am creating a NextJS application which allows the user to select one of their Spotify playlists, filter it by genre and create a subplaylist.
+## I am creating a NextJS application which allows the user to select one of their Spotify playlists, filter it by genre and create a sub-playlist.
 
 ### Motivations
 
