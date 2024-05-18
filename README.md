@@ -1,12 +1,12 @@
 # Playlist Manager
 
-## I am in the process of creating a NextJS application which, after authentication, allows the user to select one of their Spotify playlists, filter by genre and create a subplaylist.
+## I am creating a NextJS application which allows the user to select one of their Spotify playlists, filter it by genre and create a subplaylist.
 
 ### Motivations
 
-As a Spotify user, I often find that my playlists become too large to manage easily. I wished for a tool which let me filter my playlists by a given set of genres, and create sub-playlists using these filters.
+As a Spotify user, I find my playlists become too large to manage easily. I wanted a tool which let me filter my playlists by a given set of genres, and create sub-playlists using these filters.
 
-I conducted research in the form of a Google Forms survey sent to my peers, family, and friends, which indicated that other people experience the same issue and would use a tool which offers this functionality.
+I sent a Google Forms survey to my peers, family, and friends, which indicated that other people experience the same issue and would use a tool which offers this functionality.
 
 This formed my motivation for starting this project.
 
@@ -20,17 +20,17 @@ Using this documentation, I formed a plan to use various GET and POST requests t
 
 #### Proof of Concept
 
-I then implemented the OAuth2.0 process within my application and sent GET requests to the /me and /playlists endpoints to display basic user data. This simple implementation demonstrated that with complex logic and further API calls, I could achieve the desired functionality within my application.
+I then implemented the OAuth2.0 process within my application and sent GET requests to the /me and /playlists endpoints to display basic user data. This simple implementation demonstrated that I could achieve the desired functionality with complex logic and further API calls.
 
 #### Playlist Manager
 
-Using various GET requests to the /playlists, /tracks, and /artists endpoints, I could select a playlist from my library, filter it by various genres, and display the resulting sub-playlist within my application. Then using a POST request to the /playlists endpoint, I was able to create an empty playlist within my library, and then populate it using a further POST request to the /playlist endpoint.
+Using various GET requests to the /playlists, /tracks, and /artists endpoints, I could select a playlist from my library, filter it by various genres, and display the resulting sub-playlist. Then, using a POST request to the /playlists endpoint, I created an empty playlist within my library and populated it using a further POST request to the /playlist endpoint.
  
 ### Future Development
 
 Currently, my application is very limited in its functionality. Only users authorised within my application dashboard can log in and use the playlist manager tool, and the application is limited to a certain number of API calls per minute. In addition, the UX/UI of the application can be greatly improved.
 
-In future, I will look to move my application from development mode into extended quota mode to rectify the first two issues, and create and develop wireframe designs to rectify the third.
+In future, I will look to move my application from development mode into extended quota mode to rectify the first two issues and develop wireframe designs to rectify the third.
 
 ### I styled the application using TailwindCSS and the Flowbite Component Library.
 
